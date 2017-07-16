@@ -4,7 +4,7 @@ To encourage re-usable infrastructure code, this repository contains Terraform m
 
 This repo was created with ECS in mind... but creating one large module offers minimal value, therefore modules in this repo consist of other modules. This way it's easier for others to make changes, swap modules or use pieces from this repository even if not setting up a full highly availabls ECS host cluster.
 
-Details regarding how a module works is described in the module itself (if needed).
+Details regarding how a module works are described in the module itself (if needed).
 
 ## Conventions
 
