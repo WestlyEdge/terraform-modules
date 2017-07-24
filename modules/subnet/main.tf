@@ -7,7 +7,7 @@ resource "aws_subnet" "subnet" {
   count             = "${length(var.cidrs)}"
 
   tags {
-    Name        = "${var.name}_${element(var.availability_zones, count.index)}"
+    Name        = "${var.name}-${element(var.availability_zones, count.index)}"
     Environment = "${var.environment}"
   }
 }
@@ -20,7 +20,7 @@ resource "aws_route_table" "subnet" {
   count  = "${length(var.cidrs)}"
 
   tags {
-    Name        = "${var.name}_${element(var.availability_zones, count.index)}"
+    Name        = "${var.name}-${element(var.availability_zones, count.index)}"
     Environment = "${var.environment}"
   }
 }
