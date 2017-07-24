@@ -1,7 +1,7 @@
 module "network" {
   source               = "../network"
   environment          = "${var.environment}"
-  vpc_name             = "vpc-${var.cluster}"
+  network_name         = "${var.cluster_name}"
   vpc_cidr             = "${var.vpc_cidr}"
   public_subnet_cidrs  = "${var.public_subnet_cidrs}"
   private_subnet_cidrs = "${var.private_subnet_cidrs}"
@@ -13,7 +13,7 @@ module "ecs_instances" {
   source = "../ecs_instances"
 
   environment             = "${var.environment}"
-  cluster                 = "${var.cluster}"
+  cluster_name            = "${var.cluster_name}"
   instance_group          = "${var.instance_group}"
   private_subnet_ids      = "${module.network.private_subnet_ids}"
   aws_ami                 = "${var.ecs_aws_ami}"
@@ -31,5 +31,5 @@ module "ecs_instances" {
 }
 
 resource "aws_ecs_cluster" "cluster" {
-  name = "${var.cluster}"
+  name = "${var.cluster_name}"
 }

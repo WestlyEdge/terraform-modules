@@ -3,13 +3,13 @@ module "vpc" {
 
   cidr        = "${var.vpc_cidr}"
   environment = "${var.environment}"
-  vpc_name = "${var.vpc_name}"
+  vpc_name = "vpc-${var.network_name}"
 }
 
 module "private_subnet" {
   source = "../subnet"
 
-  name               = "${var.environment}_private_subnet"
+  name               = "${var.network_name}_private_subnet"
   environment        = "${var.environment}"
   vpc_id             = "${module.vpc.id}"
   cidrs              = "${var.private_subnet_cidrs}"

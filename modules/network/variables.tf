@@ -6,8 +6,8 @@ variable "environment" {
   description = "The name of the environment"
 }
 
-variable "vpc_name" {
-  description = "The name of the vpc"
+variable "network_name" {
+  description = "The name of the network"
 }
 
 variable "destination_cidr_block" {

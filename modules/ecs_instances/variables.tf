@@ -7,7 +7,7 @@ variable "cloudwatch_prefix" {
   description = "If you want to avoid cloudwatch collision or you don't want to merge all logs to one log group specify a prefix"
 }
 
-variable "cluster" {
+variable "cluster_name" {
   description = "The name of the cluster"
 }
 
