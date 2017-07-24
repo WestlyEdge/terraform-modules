@@ -3,6 +3,7 @@ module "vpc" {
 
   cidr        = "${var.vpc_cidr}"
   environment = "${var.environment}"
+  vpc_name = "${var.vpc_name}"
 }
 
 module "private_subnet" {
