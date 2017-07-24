@@ -1,4 +1,4 @@
-# Using the AWS NAT Gateway service instead of a nat instance, it's more expensive but easier
+# Using the AWS NAT Gateway service instead of a nat instance
 # See comparison http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-comparison.html
 
 resource "aws_nat_gateway" "nat" {
