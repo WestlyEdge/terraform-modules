@@ -57,7 +57,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = "${var.environment}_ecs_${var.cluster_name}_${var.instance_group}"
+    value               = "${var.cluster_name}-${aws_instance.ec2_instance.private_ip}"
     propagate_at_launch = "true"
   }
 
