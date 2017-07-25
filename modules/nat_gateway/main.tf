@@ -12,6 +12,6 @@ resource "aws_eip" "nat" {
   count = "${var.subnet_count}"
 
   tags {
-    Description = "nat gateway public ip ${count.index} for "
+    Description = "nat gateway public ip for "
   }
 }
