@@ -41,10 +41,10 @@ resource "aws_alb_listener" "https" {
 resource "aws_security_group" "alb" {
   name   = "${var.alb_name}"
   vpc_id = "${var.vpc_id}"
+  description = "sec group for ${var.alb_name} load balancer"
 
   tags {
     Name = "sg-${var.alb_name}"
-    Description = "sec group for ${var.alb_name} load balancer"
     Environment = "${var.environment}"
   }
 }
