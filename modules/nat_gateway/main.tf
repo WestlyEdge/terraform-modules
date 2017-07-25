@@ -10,4 +10,8 @@ resource "aws_nat_gateway" "nat" {
 resource "aws_eip" "nat" {
   vpc   = true
   count = "${var.subnet_count}"
+
+  tags {
+    Description = "nat gateway public ip ${count.index} for "
+  }
 }
