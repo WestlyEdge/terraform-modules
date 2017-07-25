@@ -29,7 +29,7 @@ resource "aws_security_group_rule" "outbound_internet_access" {
 
 # Default disk size for Docker is 22 gig, see http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
 resource "aws_launch_configuration" "launch" {
-  name_prefix          = "${var.environment}_${var.cluster_name}_${var.instance_group}_"
+  name_prefix          = "${var.environment}_${var.cluster_name}"
   image_id             = "${var.aws_ami}"
   instance_type        = "${var.instance_type}"
   security_groups      = ["${aws_security_group.instance.id}"]
@@ -58,7 +58,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = "${var.cluster_name}-${var.instance_group}"
+    value               = "${var.environment}-${var.cluster_name}-"
     propagate_at_launch = "true"
   }
 
