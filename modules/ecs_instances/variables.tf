@@ -39,7 +39,7 @@ variable "min_size" {
   description = "Minimum size of the nodes in the cluster"
 }
 
-#For more explenation see http://docs.aws.amazon.com/autoscaling/latest/userguide/WhatIsAutoScaling.html
+#For more explanation see http://docs.aws.amazon.com/autoscaling/latest/userguide/WhatIsAutoScaling.html
 variable "desired_capacity" {
   default     = 1
   description = "The desired capacity of the cluster"

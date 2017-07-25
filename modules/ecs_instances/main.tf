@@ -58,7 +58,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = "${var.environment}-${var.cluster_name}-"
+    value               = "ec2-${var.cluster_name}"
     propagate_at_launch = "true"
   }
 
