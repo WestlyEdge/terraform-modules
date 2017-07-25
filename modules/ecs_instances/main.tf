@@ -4,7 +4,7 @@
 # That is also the reason why ecs_instances is a seperate module and not everything is created here.
 
 resource "aws_security_group" "instance" {
-  name        = "${var.environment}_${var.cluster_name}_${var.instance_group}"
+  name        = "sg-${var.cluster_name}"
   description = "Used in ${var.environment}"
   vpc_id      = "${var.vpc_id}"
 
@@ -57,7 +57,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = "${var.cluster_name}-${aws_instance.ec2_instance.private_ip}"
+    value               = "${var.cluster_name}-${var.instance_group}"
     propagate_at_launch = "true"
   }
 
