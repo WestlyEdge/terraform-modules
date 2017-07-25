@@ -9,6 +9,7 @@ resource "aws_security_group" "instance" {
   vpc_id      = "${var.vpc_id}"
 
   tags {
+    Name          = "sg-${var.cluster_name}"
     Environment   = "${var.environment}"
     Cluster       = "${var.cluster_name}"
     InstanceGroup = "${var.instance_group}"
