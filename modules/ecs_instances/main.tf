@@ -5,7 +5,7 @@
 
 resource "aws_security_group" "instance" {
   name        = "${var.cluster_name}"
-  description = "Used in ${var.environment}"
+  description = "sec group for ${var.cluster_name} instances"
   vpc_id      = "${var.vpc_id}"
 
   tags {
