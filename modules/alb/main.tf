@@ -39,7 +39,7 @@ resource "aws_alb_listener" "https" {
 }
 
 resource "aws_security_group" "alb" {
-  name   = "sg-${var.alb_name}"
+  name   = "${var.alb_name}"
   vpc_id = "${var.vpc_id}"
 
   tags {
