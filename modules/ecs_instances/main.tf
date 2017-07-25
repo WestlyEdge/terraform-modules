@@ -47,7 +47,7 @@ resource "aws_launch_configuration" "launch" {
 
 # Instances are scaled across availability zones http://docs.aws.amazon.com/autoscaling/latest/userguide/auto-scaling-benefits.html 
 resource "aws_autoscaling_group" "asg" {
-  name                 = "${var.environment}_${var.cluster_name}_${var.instance_group}"
+  name                 = "asg-${var.cluster_name}"
   max_size             = "${var.max_size}"
   min_size             = "${var.min_size}"
   desired_capacity     = "${var.desired_capacity}"
