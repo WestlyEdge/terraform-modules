@@ -4,7 +4,7 @@
 # That is also the reason why ecs_instances is a seperate module and not everything is created here.
 
 resource "aws_security_group" "instance" {
-  name        = "sg-${var.cluster_name}"
+  name        = "${var.cluster_name}"
   description = "Used in ${var.environment}"
   vpc_id      = "${var.vpc_id}"
 
