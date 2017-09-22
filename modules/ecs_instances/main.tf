@@ -58,7 +58,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = "${var.cluster_name}-slave"
+    value               = "${var.cluster_name}-host"
     propagate_at_launch = "true"
   }
 
