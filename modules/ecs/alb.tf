@@ -1,5 +1,5 @@
 module "alb" {
-  source = "..//alb"
+  source = "../alb"
 
   environment       = "${var.environment}"
   alb_name          = "alb-${var.cluster_name}"
