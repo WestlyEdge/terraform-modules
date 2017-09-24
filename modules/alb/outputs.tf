@@ -10,6 +10,6 @@ output "alb_name" {
   value = "${aws_alb.alb.name}"
 }
 
-output "alb_listener" {
-  value = "${aws_alb_listener.http}"
+output "alb_listener_id" {
+  value = "${aws_alb_listener.http.id}"
 }
