@@ -2,7 +2,7 @@
 
 resource "aws_alb_target_group" "default" {
   name                 = "${var.alb_name}-target"
-  port                 = 80
+  port                 = 8500
   protocol             = "HTTP"
   vpc_id               = "${var.vpc_id}"
   deregistration_delay = "${var.deregistration_delay}"
