@@ -9,7 +9,3 @@ output "default_alb_target_group" {
 output "alb_name" {
   value = "${aws_alb.alb.name}"
 }
-
-output "alb_listener_id" {
-  value = "${aws_alb_listener.http.id}"
-}
