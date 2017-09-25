@@ -2,7 +2,7 @@
 
 resource "aws_alb_target_group" "default" {
   name                 = "${var.alb_name}-target"
-  port                 = 8500
+  port                 = 80
   protocol             = "HTTP"
   vpc_id               = "${var.vpc_id}"
   deregistration_delay = "${var.deregistration_delay}"
@@ -27,7 +27,7 @@ resource "aws_alb" "alb" {
   }
 }
 
-resource "aws_alb_listener" "http" {
+resource "aws_alb_listener" "https" {
   load_balancer_arn = "${aws_alb.alb.id}"
   port              = "80"
   protocol          = "HTTP"
