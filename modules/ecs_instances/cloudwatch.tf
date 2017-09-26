@@ -2,7 +2,7 @@
 # For example: we have a CloudWatch LogGroup named 'docker' where you can find streams 'ENV/IP', like 'test/10.0.0.1'.  
 # Consequence: When you have multiple ECS environments in one account you can only create the LogGroups once.
 # This means that the other environments have to import the log groups.
-# If you don't want that just specify the cloudwatch_prefix per enviourment.
+# If you don't want that just specify the cloudwatch_prefix per environment.
 resource "aws_cloudwatch_log_group" "dmesg" {
   name              = "${var.cloudwatch_prefix}/var/log/dmesg"
   retention_in_days = 30
