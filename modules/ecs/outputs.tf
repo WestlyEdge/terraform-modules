@@ -25,3 +25,11 @@ output "ecs_instance_role_name" {
 output "ecs_instance_asg_name" {
   value = "${module.ecs_instances.ecs_instance_asg_name}"
 }
+
+output "network_vpc_id" {
+  value = "${module.network.vpc_id}"
+}
+
+output "network_public_subnet_ids" {
+  value = "${module.network.public_subnet_ids}"
+}
