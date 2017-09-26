@@ -21,3 +21,7 @@ output "ecs_instance_security_group_id" {
 output "ecs_instance_role_name" {
   value = "${aws_iam_role.ecs_instance_role.name}"
 }
+
+output "ecs_instance_asg_name" {
+  value = "${module.ecs_instances.ecs_instance_asg_name}"
+}
