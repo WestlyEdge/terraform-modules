@@ -1,5 +1,5 @@
 output "alb_target_group" {
-  value = "${module.alb.default_alb_target_group}"
+  value = "${module.alb.alb_target_group}"
 }
 
 output "ecs_cluster_arn" {
