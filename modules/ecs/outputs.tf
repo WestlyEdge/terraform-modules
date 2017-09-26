@@ -17,3 +17,7 @@ output "alb_security_group_id" {
 output "ecs_instance_security_group_id" {
   value = "${module.ecs_instances.ecs_instance_security_group_id}"
 }
+
+output "ecs_instance_role_arn" {
+  value = "${aws_iam_role.ecs_instance_role.arn}"
+}
