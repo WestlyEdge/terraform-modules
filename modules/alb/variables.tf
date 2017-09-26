@@ -30,3 +30,13 @@ variable "allow_cidr_block" {
   default     = "0.0.0.0/0"
   description = "Specify cird block that is allowd to acces the LoadBalancer"
 }
+
+variable "port" {
+  default     = 80
+  description = "alb listen for incoming requests on this port"
+}
+
+variable "protocol" {
+  default     = "HTTP"
+  description = "alb listen for incoming requests on this protocol"
+}

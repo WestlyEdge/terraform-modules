@@ -1,15 +1,15 @@
-# Default ALB implementation that can be used to connect ECS instances to it
+# ALB implementation that can be used to connect ECS instances to it
 
 resource "aws_alb_target_group" "default" {
   name                 = "${var.alb_name}-target"
-  port                 = 80
-  protocol             = "HTTP"
+  port                 = "${var.port}"
+  protocol             = "${var.protocol}"
   vpc_id               = "${var.vpc_id}"
   deregistration_delay = "${var.deregistration_delay}"
 
   health_check {
     path     = "${var.health_check_path}"
-    protocol = "HTTP"
+    protocol = "${var.protocol}"
   }
 
   tags {
@@ -29,8 +29,8 @@ resource "aws_alb" "alb" {
 
 resource "aws_alb_listener" "https" {
   load_balancer_arn = "${aws_alb.alb.id}"
-  port              = "80"
-  protocol          = "HTTP"
+  port              = "${var.port}"
+  protocol          = "${var.protocol}"
 
   default_action {
     target_group_arn = "${aws_alb_target_group.default.id}"
@@ -51,8 +51,8 @@ resource "aws_security_group" "alb" {
 
 resource "aws_security_group_rule" "https_from_anywhere" {
   type              = "ingress"
-  from_port         = 80
-  to_port           = 80
+  from_port         = "${var.port}"
+  to_port           = "${var.port}"
   protocol          = "TCP"
   cidr_blocks       = ["${var.allow_cidr_block}"]
   security_group_id = "${aws_security_group.alb.id}"
