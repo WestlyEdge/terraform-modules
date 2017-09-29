@@ -16,6 +16,7 @@ resource "aws_security_group" "instance" {
   }
 }
 
+# Temporarily add this rule so we can ssh to ecs hosts
 resource "aws_security_group_rule" "public-ssh-access" {
   type                      = "ingress"
   from_port                 = 22
@@ -46,7 +47,7 @@ resource "aws_launch_configuration" "launch" {
   user_data                   = "${data.template_file.user_data.rendered}"
   iam_instance_profile        = "${var.iam_instance_profile_id}"
   key_name                    = "${var.key_name}"
-  associate_public_ip_address = true
+  associate_public_ip_address = true  # Temporarily add public ip so we can ssh to ecs hosts
 
   # aws_launch_configuration can not be modified.
   # Therefore we use create_before_destroy so that a new modified aws_launch_configuration can be created 

@@ -43,7 +43,11 @@ resource "aws_route" "public_igw_route" {
 resource "aws_route" "private_nat_route" {
   count                  = "${length(var.private_subnet_cidrs)}"
   route_table_id         = "${element(module.private_subnet.route_table_ids, count.index)}"
-  nat_gateway_id         = "${element(module.nat.ids, count.index)}"
+
+  # Temporarily open internet access in private vpc so we can ssh to instances
+  gateway_id             = "${module.vpc.igw}"
+  #nat_gateway_id         = "${element(module.nat.ids, count.index)}"
+
   destination_cidr_block = "${var.destination_cidr_block}"
 }
 
