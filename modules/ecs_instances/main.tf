@@ -29,13 +29,14 @@ resource "aws_security_group_rule" "outbound_internet_access" {
 
 # Default disk size for Docker is 22 gig, see http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
 resource "aws_launch_configuration" "launch" {
-  name                 = "lc-${var.cluster_name}"
-  image_id             = "${var.aws_ami}"
-  instance_type        = "${var.instance_type}"
-  security_groups      = ["${aws_security_group.instance.id}"]
-  user_data            = "${data.template_file.user_data.rendered}"
-  iam_instance_profile = "${var.iam_instance_profile_id}"
-  key_name             = "${var.key_name}"
+  name                        = "lc-${var.cluster_name}"
+  image_id                    = "${var.aws_ami}"
+  instance_type               = "${var.instance_type}"
+  security_groups             = ["${aws_security_group.instance.id}"]
+  user_data                   = "${data.template_file.user_data.rendered}"
+  iam_instance_profile        = "${var.iam_instance_profile_id}"
+  key_name                    = "${var.key_name}"
+  associate_public_ip_address = true
 
   # aws_launch_configuration can not be modified.
   # Therefore we use create_before_destroy so that a new modified aws_launch_configuration can be created 
