@@ -16,6 +16,16 @@ resource "aws_security_group" "instance" {
   }
 }
 
+resource "aws_security_group_rule" "public-ssh-access" {
+  type                      = "ingress"
+  from_port                 = 22
+  to_port                   = 22
+  protocol                  = "TCP"
+  self                      = true
+  cidr_blocks               = ["0.0.0.0/0"]
+  security_group_id         = "${aws_security_group.instance.id}"
+}
+
 # We separate the rules from the aws_security_group because then we can manipulate the 
 # aws_security_group outside of this module
 resource "aws_security_group_rule" "outbound_internet_access" {
