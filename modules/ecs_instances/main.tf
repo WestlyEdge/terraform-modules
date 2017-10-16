@@ -1,6 +1,6 @@
 # You can have multiple ECS clusters in the same account with different resources.
 # Therefore all resources created here have the name containing the name of the:
-# environment, cluster name en the instance_group name.
+# environment, cluster name, and the instance_group name.
 # That is also the reason why ecs_instances is a seperate module and not everything is created here.
 
 resource "aws_security_group" "instance" {
@@ -16,6 +16,7 @@ resource "aws_security_group" "instance" {
   }
 }
 
+# TODO : trigger this with an incoming flag maybe?
 # Temporarily add this rule so we can ssh to ecs hosts
 resource "aws_security_group_rule" "public-ssh-access" {
   type                      = "ingress"
@@ -46,11 +47,12 @@ resource "aws_launch_configuration" "launch" {
   user_data                   = "${data.template_file.user_data.rendered}"
   iam_instance_profile        = "${var.iam_instance_profile_id}"
   key_name                    = "${var.key_name}"
+
+  # TODO : trigger this with an incoming flag maybe?
   associate_public_ip_address = true  # Temporarily add public ip so we can ssh to ecs hosts
 
   # aws_launch_configuration can not be modified.
-  # Therefore we use create_before_destroy so that a new modified aws_launch_configuration can be created 
-  # before the old one get's destroyed. That's why we use name_prefix instead of name.
+  # Therefore we use create_before_destroy so that a new modified aws_launch_configuration can be created before the old one gets destroyed
   lifecycle {
     create_before_destroy = true
   }
