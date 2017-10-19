@@ -1,6 +1,7 @@
 
 #------------------------------------------------------------------------------
 # Applying this module helps when you need to temporarily ssh into ecs hosts
+# TODO: this does not work yet without some manual intervention
 #------------------------------------------------------------------------------
 
 # add public ip to ecs instance launch configuration
