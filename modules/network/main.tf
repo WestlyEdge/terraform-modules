@@ -41,10 +41,11 @@ resource "aws_route" "public_igw_route" {
 }
 
 resource "aws_route" "private_nat_route" {
-  count                  = "${length(var.private_subnet_cidrs)}"
-  route_table_id         = "${element(module.private_subnet.route_table_ids, count.index)}"
-  nat_gateway_id         = "${element(module.nat.ids, count.index)}"
-  destination_cidr_block = "${var.destination_cidr_block}"
+  count                   = "${length(var.private_subnet_cidrs)}"
+  route_table_id          = "${element(module.private_subnet.route_table_ids, count.index)}"
+  nat_gateway_id          = "${element(module.nat.ids, count.index)}"
+  destination_cidr_block  = "${var.destination_cidr_block}"
+  enabled                 = false
 }
 
 # Creating a NAT Gateway takes some time. Some services need the internet (NAT Gateway) before proceeding. 
