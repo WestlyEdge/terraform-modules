@@ -1,6 +1,9 @@
-# Applying this module helps when you need to temporarily ssh into ecs hosts
 
-# Temporarily add public ip so we can ssh to ecs hosts
+#------------------------------------------------------------------------------
+# Applying this module helps when you need to temporarily ssh into ecs hosts
+#------------------------------------------------------------------------------
+
+# add public ip to ecs hosts launch configuration
 resource "aws_launch_configuration" "launch" {
   name = "lc-${var.cluster_name}-debug-mode"
   associate_public_ip_address = true
@@ -10,7 +13,7 @@ resource "aws_launch_configuration" "launch" {
   }
 }
 
-# Temporarily add this rule so we can ssh to ecs hosts
+# temporarily add this rule so we can ssh to ecs hosts
 resource "aws_security_group_rule" "public-ssh-access" {
   type                      = "ingress"
   from_port                 = 22
@@ -20,7 +23,7 @@ resource "aws_security_group_rule" "public-ssh-access" {
   security_group_id         = "${var.security_group_id}"
 }
 
-# Temporarily open internet access in private vpc so we can ssh to instances
+# temporarily open internet access in private vpc so we can ssh to instances
 resource "aws_route" "private_nat_route" {
   gateway_id             = "${var.vpc_internet_gateway_id}"
 }
