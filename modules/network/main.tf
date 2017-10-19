@@ -45,10 +45,6 @@ resource "aws_route" "private_nat_route" {
   route_table_id         = "${element(module.private_subnet.route_table_ids, count.index)}"
   nat_gateway_id         = "${element(module.nat.ids, count.index)}"
   destination_cidr_block = "${var.destination_cidr_block}"
-
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 # Creating a NAT Gateway takes some time. Some services need the internet (NAT Gateway) before proceeding. 
