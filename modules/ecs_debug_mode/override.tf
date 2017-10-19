@@ -8,9 +8,6 @@ resource "aws_launch_configuration" "launch" {
   name = "lc-${var.cluster_name}-debug-mode"
   associate_public_ip_address = true
 
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 # temporarily add this rule so we can ssh to ecs instances
