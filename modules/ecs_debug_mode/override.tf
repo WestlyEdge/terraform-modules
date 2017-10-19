@@ -1,4 +1,4 @@
-
+# Applying this module helps when you need to temporarily ssh into ecs hosts
 
 # Temporarily add public ip so we can ssh to ecs hosts
 resource "aws_launch_configuration" "launch" {
@@ -17,5 +17,10 @@ resource "aws_security_group_rule" "public-ssh-access" {
   to_port                   = 22
   protocol                  = "TCP"
   cidr_blocks               = ["0.0.0.0/0"]
-  security_group_id         = "${aws_security_group.instance.id}"
+  security_group_id         = "${var.security_group_id}"
+}
+
+# Temporarily open internet access in private vpc so we can ssh to instances
+resource "aws_route" "private_nat_route" {
+  gateway_id             = "${var.vpc_internet_gateway_id}"
 }

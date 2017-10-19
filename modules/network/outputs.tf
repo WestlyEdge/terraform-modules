@@ -17,3 +17,7 @@ output "public_subnet_ids" {
 output "depends_id" {
   value = "${null_resource.dummy_dependency.id}"
 }
+
+output "vpc_internet_gateway_id" {
+  value = "${module.vpc.igw}"
+}
