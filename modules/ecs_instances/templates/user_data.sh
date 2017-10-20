@@ -131,8 +131,7 @@ name="${cluster_name}-host-$privateIp"
 
 echo "ec2Name: " $name
 
-
-
+aws ec2 create-tags --resources $instanceId --tags Key=Name,Value=$name --region us-east-1
 
 
 
