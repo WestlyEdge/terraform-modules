@@ -7,12 +7,7 @@ resource "aws_iam_role" "ecs_instance_role" {
   "Version": "2008-10-17",
   "Statement": [
     {
-      "Action": [
-        "sts:AssumeRole",
-        "ec2:CreateTags",
-        "ec2:DescribeTags",
-        "ec2:DescribeInstances"
-      ],
+      "Action": "sts:AssumeRole",
       "Principal": {
         "Service": ["ec2.amazonaws.com"]
       },
@@ -37,4 +32,29 @@ resource "aws_iam_role_policy_attachment" "ecs_ec2_role" {
 resource "aws_iam_role_policy_attachment" "ecs_ec2_cloudwatch_role" {
   role       = "${aws_iam_role.ecs_instance_role.id}"
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
+}
+
+resource "aws_iam_policy" "update_ec2_tags_policy" {
+  name = "${var.environment}_update_ec2_tags_policy"
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+  {
+      "Action": [
+          "ec2:CreateTags",
+          "ec2:DescribeTags",
+          "ec2:DescribeInstances"
+      ],
+      "Effect": "Allow",
+      "Resource": ["*"]
+  }
+]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "update_ec2_tags_role" {
+  role       = "${aws_iam_role.ecs_instance_role.id}"
+  policy_arn = "${aws_iam_policy.update_ec2_tags_policy.arn}"
 }
