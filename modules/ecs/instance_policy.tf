@@ -12,7 +12,7 @@ resource "aws_iam_role" "ecs_instance_role" {
         "ec2:CreateTags",
         "ec2:DescribeTags",
         "ec2:DescribeInstances"
-      ]
+      ],
       "Principal": {
         "Service": ["ec2.amazonaws.com"]
       },
