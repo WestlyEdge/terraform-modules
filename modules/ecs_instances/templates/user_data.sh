@@ -3,6 +3,10 @@
 #cloud-config
 output: {all: '| tee -a /var/log/cloud-init-output.log'}
 
+echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+echo "BEGIN USER_DATA.SH"
+echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
 # Timezone
 ln -fs /usr/share/zoneinfo/UTC /etc/localtime
 
@@ -108,13 +112,17 @@ az=$(curl -s http://instance-data/latest/meta-data/placement/availability-zone)
 region=$${az:0:$${#az} - 1}
 
 # set a unique ec2 tag name for this instance
-privateIp=http://169.254.169.254/latest/meta-data/local-ipv4
+privateIp=${http://169.254.169.254/latest/meta-data/local-ipv4}
 echo $privateIp
-echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
 
 
 
 #Custom userdata script code
 ${custom_userdata}
+
+echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+echo "END USER_DATA.SH"
+echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 echo "Done"
