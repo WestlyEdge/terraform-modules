@@ -100,8 +100,7 @@ region=$${az:0:$${#az} - 1}
 
 # set a unique ec2 tag name for this instance
 privateIp=http://169.254.169.254/latest/meta-data/local-ipv4
-pattern="[0-9]"
-echo ${privateIp//./_}
+echo ${privateIp}
 
 
 
