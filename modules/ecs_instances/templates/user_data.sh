@@ -119,9 +119,11 @@ region=$${az:0:$${#az} - 1}
 
 # set a unique ec2 tag name for this instance
 privateIp=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
-echo $privateIp
-
-
+echo "PrivateIp: " $privateIp
+privateIp=${privateIp//./_}
+echo "PrivateIp: " $privateIp
+ec2Name= ${var.cluster_name} "-host-" $privateIp
+echo "ec2Name: " $ec2Name
 
 
 #Custom userdata script code
