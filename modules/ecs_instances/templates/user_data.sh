@@ -119,14 +119,22 @@ region=$${az:0:$${#az} - 1}
 
 # set a unique ec2 tag name for this instance
 privateIp=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
-echo "PrivateIp: " $privateIp
+instanceId=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+azZone=$(curl http://169.254.169.254/latest/meta-data/placement/availability-zone)
 
-echo "PrivateIp: " $privateIp
+
+echo "PrivateIp: $privateIp"
+echo "instanceId: $instanceId"
+echo "azZone: $azZone"
+
 name="${cluster_name}-host-$privateIp"
+
 echo "ec2Name: " $name
 
-instanceId=$(curl http://169.254.169.254/latest/meta-data/instance-id)
-echo "instanceId: " $instanceId
+
+
+
+
 
 
 #Custom userdata script code
