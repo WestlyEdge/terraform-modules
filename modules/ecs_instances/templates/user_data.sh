@@ -122,8 +122,8 @@ privateIp=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 echo "PrivateIp: " $privateIp
 
 echo "PrivateIp: " $privateIp
-ec2Name= "${cluster_name}-host-" $privateIp
-echo "ec2Name: " $ec2Name
+name="${cluster_name}-host-" $privateIp
+echo "ec2Name: " $name
 
 
 #Custom userdata script code
