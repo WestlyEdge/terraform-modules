@@ -112,7 +112,7 @@ az=$(curl -s http://instance-data/latest/meta-data/placement/availability-zone)
 region=$${az:0:$${#az} - 1}
 
 # set a unique ec2 tag name for this instance
-privateIp=${http://169.254.169.254/latest/meta-data/local-ipv4}
+privateIp=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 echo $privateIp
 
 
