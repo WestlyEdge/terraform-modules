@@ -62,13 +62,13 @@ log_stream_name = ${cluster_name}/{container_instance_id}
 datetime_format = %Y-%m-%dT%H:%M:%SZ
 
 [/var/log/cloud-init-output.log]
-file = /var/log/cloud-init-output.log.*
+file = /var/log/cloud-init-output.log
 log_group_name = ${cloudwatch_prefix}/var/log/cloud-init-output.log
 log_stream_name = ${cluster_name}/{container_instance_id}
 datetime_format = %Y-%m-%dT%H:%M:%SZ
 
 [/var/log/cloud-init.log]
-file = /var/log/cloud-init.log.*
+file = /var/log/cloud-init.log
 log_group_name = ${cloudwatch_prefix}/var/log/cloud-init.log
 log_stream_name = ${cluster_name}/{container_instance_id}
 datetime_format = %Y-%m-%dT%H:%M:%SZ
