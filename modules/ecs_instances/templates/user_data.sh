@@ -119,28 +119,17 @@ region=$${az:0:$${#az} - 1}
 
 # set a unique ec2 tag name for this instance
 privateIp=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+privateIp=$(echo $privateIp | sed 's/\./_/g')
 instanceId=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 azZone=$(curl http://169.254.169.254/latest/meta-data/placement/availability-zone)
-
-echo "PrivateIp: $privateIp"
-privateIp=$(echo $privateIp | sed 's/\./_/g')
-echo "PrivateIp: $privateIp"
-echo "instanceId: $instanceId"
-
-echo "azZone: $azZone"
 region=$${azZone::-1}
-
-
 name="${cluster_name}-host-$privateIp"
 
 echo "ec2Name: " $name
 
 aws ec2 create-tags --resources $instanceId --tags Key=Name,Value=$name --region $region
 
-
-
-
-#Custom userdata script code
+# apply custom userdata script code
 ${custom_userdata}
 
 echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
