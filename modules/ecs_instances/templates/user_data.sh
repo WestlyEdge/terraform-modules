@@ -98,6 +98,13 @@ instance_arn=$(curl -s http://localhost:51678/v1/metadata | jq -r '. | .Containe
 az=$(curl -s http://instance-data/latest/meta-data/placement/availability-zone)
 region=$${az:0:$${#az} - 1}
 
+# set a unique ec2 tag name for this instance
+privateIp=http://169.254.169.254/latest/meta-data/local-ipv4
+pattern="[0-9]"
+echo ${privateIp//./_}
+
+
+
 #Custom userdata script code
 ${custom_userdata}
 

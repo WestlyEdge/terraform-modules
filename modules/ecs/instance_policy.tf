@@ -34,7 +34,7 @@ resource "aws_iam_role_policy_attachment" "ecs_ec2_cloudwatch_role" {
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchLogsFullAccess"
 }
 
-resource "aws_iam_policy" "update_ec2_tags_policy" {
+resource "aws_iam_policy" "ecs_update_ec2_tags_policy" {
   name = "${var.environment}_update_ec2_tags_policy"
   policy = <<EOF
 {
@@ -56,5 +56,5 @@ EOF
 
 resource "aws_iam_role_policy_attachment" "update_ec2_tags_role" {
   role       = "${aws_iam_role.ecs_instance_role.id}"
-  policy_arn = "${aws_iam_policy.update_ec2_tags_policy.arn}"
+  policy_arn = "${aws_iam_policy.ecs_update_ec2_tags_policy.arn}"
 }
