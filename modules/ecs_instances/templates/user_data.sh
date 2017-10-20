@@ -111,9 +111,8 @@ privateIp=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 privateIp=$(echo $privateIp | sed 's/\./_/g')
 instanceId=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 azZone=$(curl http://169.254.169.254/latest/meta-data/placement/availability-zone)
-region=$${azZone::-1}
 name="${cluster_name}-host-$privateIp"
-
+region=$${azZone::-1}
 
 echo "instanceId: " $instanceId
 echo "ec2Name: " $name
