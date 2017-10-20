@@ -122,10 +122,13 @@ privateIp=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 instanceId=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 azZone=$(curl http://169.254.169.254/latest/meta-data/placement/availability-zone)
 
-
+echo "PrivateIp: $privateIp"
+$privateIp=result=$(echo $privateIp | sed 's/\./_/g')
 echo "PrivateIp: $privateIp"
 echo "instanceId: $instanceId"
 echo "azZone: $azZone"
+
+
 
 name="${cluster_name}-host-$privateIp"
 
