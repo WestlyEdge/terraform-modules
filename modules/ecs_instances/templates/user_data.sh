@@ -126,15 +126,16 @@ echo "PrivateIp: $privateIp"
 privateIp=$(echo $privateIp | sed 's/\./_/g')
 echo "PrivateIp: $privateIp"
 echo "instanceId: $instanceId"
-echo "azZone: $azZone"
 
+echo "azZone: $azZone"
+region=${azZone::-1}
 
 
 name="${cluster_name}-host-$privateIp"
 
 echo "ec2Name: " $name
 
-aws ec2 create-tags --resources $instanceId --tags Key=Name,Value=$name --region us-east-1
+aws ec2 create-tags --resources $instanceId --tags Key=Name,Value=$name --region $region
 
 
 
