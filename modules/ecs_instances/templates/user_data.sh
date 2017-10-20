@@ -122,7 +122,7 @@ privateIp=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 echo "PrivateIp: " $privateIp
 
 echo "PrivateIp: " $privateIp
-name=$("${cluster_name}-host-" $privateIp)
+name="${cluster_name}-host-"
 echo "ec2Name: " $name
 
 
