@@ -128,7 +128,7 @@ echo "PrivateIp: $privateIp"
 echo "instanceId: $instanceId"
 
 echo "azZone: $azZone"
-region=${azZone::-1}
+region=${azZone:-1}
 
 
 name="${cluster_name}-host-$privateIp"
