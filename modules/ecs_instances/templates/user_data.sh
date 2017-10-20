@@ -125,6 +125,9 @@ echo "PrivateIp: " $privateIp
 name="${cluster_name}-host-$privateIp"
 echo "ec2Name: " $name
 
+instanceId=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+echo "instanceId: " $instanceId
+
 
 #Custom userdata script code
 ${custom_userdata}
