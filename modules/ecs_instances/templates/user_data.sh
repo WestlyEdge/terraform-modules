@@ -106,17 +106,6 @@ EOF
 
 start ecs
 
-#Get ECS instance info, although not used in this user_data itself this allows you to use
-#az(availability zone) and region
-until $(curl --output /dev/null --silent --head --fail http://localhost:51678/v1/metadata); do
-  printf '.'
-  sleep 5
-done
-
-instance_arn=$(curl -s http://localhost:51678/v1/metadata | jq -r '. | .ContainerInstanceArn' | awk -F/ '{print $NF}' )
-az=$(curl -s http://instance-data/latest/meta-data/placement/availability-zone)
-region=$${az:0:$${#az} - 1}
-
 # set a unique ec2 tag name for this instance
 privateIp=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 privateIp=$(echo $privateIp | sed 's/\./_/g')
@@ -125,7 +114,10 @@ azZone=$(curl http://169.254.169.254/latest/meta-data/placement/availability-zon
 region=$${azZone::-1}
 name="${cluster_name}-host-$privateIp"
 
+
+echo "instanceId: " $instanceId
 echo "ec2Name: " $name
+echo "region: " $region
 
 aws ec2 create-tags --resources $instanceId --tags Key=Name,Value=$name --region $region
 
