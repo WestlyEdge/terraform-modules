@@ -16,9 +16,7 @@ resource "aws_iam_role" "ecs_instance_role" {
       "Principal": {
         "Service": ["ec2.amazonaws.com"]
       },
-      "Effect": "Allow",
-      "Resource": ["*"]
-    }
+      "Effect": "Allow"
   ]
 }
 EOF
