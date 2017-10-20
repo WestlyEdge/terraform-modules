@@ -1,11 +1,11 @@
 #!/bin/bash
 
-#cloud-config
-output: {all: '| tee -a /var/log/cloud-init-output.log'}
-
 echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 echo "BEGIN USER_DATA.SH"
 echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
+#cloud-config
+output: {all: '| tee -a /var/log/cloud-init-output.log'}
 
 # Timezone
 ln -fs /usr/share/zoneinfo/UTC /etc/localtime
@@ -135,5 +135,3 @@ ${custom_userdata}
 echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 echo "END USER_DATA.SH"
 echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
-echo "Done"
