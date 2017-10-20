@@ -33,6 +33,11 @@ resource "aws_cloudwatch_log_group" "messages" {
   retention_in_days = 30
 }
 
+resource "aws_cloudwatch_log_group" "cloud-init" {
+  name              = "${var.cloudwatch_prefix}/var/log/cloud-init"
+  retention_in_days = 30
+}
+
 resource "aws_cloudwatch_log_group" "cloud-init-output" {
   name              = "${var.cloudwatch_prefix}/var/log/cloud-init-output"
   retention_in_days = 30
