@@ -4,9 +4,6 @@ echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 echo "BEGIN USER_DATA.SH"
 echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
-#cloud-config
-output: {all: '| tee -a /var/log/cloud-init-output.log'}
-
 # Timezone
 ln -fs /usr/share/zoneinfo/UTC /etc/localtime
 
