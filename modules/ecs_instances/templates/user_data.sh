@@ -111,9 +111,9 @@ azZone=$(curl http://169.254.169.254/latest/meta-data/placement/availability-zon
 name="${cluster_name}-host-$privateIp"
 region=$${azZone::-1}
 
-echo "instanceId: " $instanceId
-echo "ec2Name: " $name
-echo "region: " $region
+echo "instanceId: $instanceId"
+echo "ec2Name: $name"
+echo "region: $region"
 
 aws ec2 create-tags --resources $instanceId --tags Key=Name,Value=$name --region $region
 
