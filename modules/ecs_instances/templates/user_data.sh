@@ -101,7 +101,7 @@ end script
 
 EOF
 
-# add the efs volume to the ecs host instance
+# mount the efs volume to the ecs host instance
 yum install -y nfs-utils
 mkdir /efs
 mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 fs-b5e8bcfc.efs.us-east-1.amazonaws.com:/ /efs
