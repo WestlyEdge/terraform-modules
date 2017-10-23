@@ -2,10 +2,6 @@ resource "aws_vpc" "vpc" {
   cidr_block           = "${var.cidr}"
   enable_dns_hostnames = true
 
-  lifecycle {
-    prevent_destroy = true
-  }
-
   tags {
     Name        = "${var.vpc_name}"
     Environment = "${var.environment}"
