@@ -4,10 +4,10 @@ echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 echo "BEGIN USER_DATA.SH"
 echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
-# Timezone
+# timezone
 ln -fs /usr/share/zoneinfo/UTC /etc/localtime
 
-#Using script from http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_cloudwatch_logs.html
+# using script from http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_cloudwatch_logs.html
 # Install awslogs and the jq JSON parser
 yum install -y awslogs jq aws-cli
 
@@ -18,7 +18,7 @@ ${ecs_config}
   echo 'ECS_AVAILABLE_LOGGING_DRIVERS=${ecs_logging}'
 } >> /etc/ecs/ecs.config
 
-# Inject the CloudWatch Logs configuration file contents
+# inject the CloudWatch Logs configuration file contents
 cat > /etc/awslogs/awslogs.conf <<- EOF
 [general]
 state_file = /var/lib/awslogs/agent-state
@@ -72,11 +72,11 @@ datetime_format = %Y-%m-%dT%H:%M:%SZ
 
 EOF
 
-# Set the region to send CloudWatch Logs data to (the region where the container instance is located)
+# set the region to send CloudWatch Logs data to (the region where the container instance is located)
 region=$(curl 169.254.169.254/latest/meta-data/placement/availability-zone | sed s'/.$//')
 sed -i -e "s/region = us-east-1/region = $region/g" /etc/awslogs/awscli.conf
 
-# Set the ip address of the node
+# set the ip address of the node
 container_instance_id=$(curl 169.254.169.254/latest/meta-data/local-ipv4)
 sed -i -e "s/{container_instance_id}/$container_instance_id/g" /etc/awslogs/awslogs.conf
 
@@ -100,6 +100,12 @@ script
 end script
 
 EOF
+
+# add the efs volume to the ecs host instance
+yum install -y nfs-utils
+mkdir /efs
+mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 fs-b5e8bcfc.efs.us-east-1.amazonaws.com:/ /efs
+service docker restart
 
 start ecs
 
