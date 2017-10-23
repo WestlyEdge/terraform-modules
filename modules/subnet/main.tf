@@ -6,6 +6,10 @@ resource "aws_subnet" "subnet" {
   availability_zone = "${element(var.availability_zones, count.index)}"
   count             = "${length(var.cidrs)}"
 
+  lifecycle {
+    prevent_destroy = true
+  }
+
   tags {
     Name        = "${var.name}-${element(var.availability_zones, count.index)}"
     Environment = "${var.environment}"
