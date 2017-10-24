@@ -20,6 +20,10 @@ These conventions exist in every module...
 
 ECS services (such as Consul and Vault) are also packaged as re-usable modules @ */ecs_services/* 
 
+## ECS Logs
+
+All ECS instance logs are shipped out to Cloudwatch
+
 ## ECS configuration
 
 ECS is configured using the */etc/ecs/ecs.config* file as you can see [here](http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html). There are two important configurations in this file. One is the ECS cluster name so that it can connect to the cluster, this should be specified from terraform because you want this to be variable. The other one is access to Docker Hub to be able to access private repositories. To do this safely use an S3 bucket that contains the Docker Hub configuration. See the *ecs_config* variable in the *ecs_instances* module for an example.
