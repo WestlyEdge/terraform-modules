@@ -18,7 +18,7 @@ These conventions exist in every module...
 
 ## ECS services
 
-ECS services such as Consul & Vault are also packaged as re-usable modules @ */ecs_services/* 
+ECS services (such as Consul and Vault) are also packaged as re-usable modules @ */ecs_services/* 
 
 ## ECS configuration
 
