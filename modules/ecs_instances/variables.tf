@@ -63,11 +63,11 @@ variable "depends_id" {
   description = "Workaround to wait for the NAT gateway to finish before starting the instances"
 }
 
-variable "aws_key_pair_public_key" {
+variable "key_pair_public_key" {
   description = "SSH public key to be used"
 }
 
-variable "aws_key_pair_name" {
+variable "key_pair_name" {
   description = "SSH key name to be used"
 }
 

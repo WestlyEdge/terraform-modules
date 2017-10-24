@@ -49,11 +49,11 @@ variable "desired_capacity" {
   description = "The desired capacity of the cluster"
 }
 
-variable "aws_key_pair_public_key" {
+variable "key_pair_public_key" {
   description = "SSH public key to be used"
 }
 
-variable "aws_key_pair_name" {
+variable "key_pair_name" {
   description = "SSH key name to be used"
 }
 

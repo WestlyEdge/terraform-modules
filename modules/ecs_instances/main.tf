@@ -28,8 +28,8 @@ resource "aws_security_group_rule" "outbound_internet_access" {
 }
 
 resource "aws_key_pair" "ecs" {
-  key_name   = "${var.aws_key_pair_name}"
-  public_key = "${var.aws_key_pair_public_key}"
+  key_name   = "${var.key_pair_name}"
+  public_key = "${var.key_pair_public_key}"
 }
 
 # Default disk size for Docker is 22 gig, see http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html
