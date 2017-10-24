@@ -15,11 +15,11 @@ These conventions exist in every module...
 * [Optional] Contains variables.tf which sets required attributes
 * For grouping in AWS we set the tag "Environment" everywhere where possible
 
+## ECS Instance Logs
+
+- All ECS instance logs are shipped out to a CloudWatch log group
+
 ## ECS services
 
 - ECS services (such as Consul and Vault) are also packaged as re-usable modules @ */ecs_services/* 
 - ECS service specific logs (such as Consul and Vault) are shipped out to a CloudWatch log group
-
-## ECS Instance Logs
-
-- All ECS instance logs are shipped out to a CloudWatch log group
