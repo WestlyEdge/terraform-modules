@@ -156,7 +156,3 @@ resource "aws_cloudwatch_log_group" "vault" {
   name              = "${var.cluster_name}/vault"
   retention_in_days = 30
 }
-
-output "vault_alb_dns_name" {
-  value = "${module.alb_vault.alb_dns_name}"
-}
