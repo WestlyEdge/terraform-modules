@@ -17,9 +17,9 @@ These conventions exist in every module...
 
 ## ECS services
 
-ECS services (such as Consul and Vault) are also packaged as re-usable modules @ */ecs_services/* 
+- ECS services (such as Consul and Vault) are also packaged as re-usable modules @ */ecs_services/* 
+- ECS service specific logs (such as Consul and Vault) are shipped out to a CloudWatch log group
 
-## ECS Logs
+## ECS Instance Logs
 
 - All ECS instance logs are shipped out to a CloudWatch log group
-- All ECS container service specific logs (such as Consul and Vault)are also shipped out to a CloudWatch log group
