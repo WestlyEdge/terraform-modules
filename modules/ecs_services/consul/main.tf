@@ -13,8 +13,6 @@ module "alb_consul" {
 
 resource "aws_ecs_service" "consul" {
 
-  depends_on = ["module.ecs"]
-
   name            = "consul"
   cluster         = "${var.ecs_cluster_arn}"
   task_definition = "${aws_ecs_task_definition.consul.arn}"
