@@ -15,7 +15,3 @@ These conventions exist in every module...
 * [Optional] Contains outputs.tf with the output parameters
 * [Optional] Contains variables.tf which sets required attributes
 * For grouping in AWS we set the tag "Environment" everywhere where possible
-
-## Module Structure
-
-![Terraform module structure](img/ecs-terraform-modules.png)
