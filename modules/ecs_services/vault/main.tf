@@ -14,8 +14,6 @@ module "alb_vault" {
 
 resource "aws_ecs_service" "vault" {
 
-  depends_on = ["aws_ecs_service.consul"]
-
   name            = "vault"
   cluster         = "${var.ecs_cluster_arn}"
   task_definition = "${aws_ecs_task_definition.vault.arn}"
