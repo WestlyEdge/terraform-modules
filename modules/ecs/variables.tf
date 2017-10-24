@@ -84,8 +84,3 @@ variable "cloudwatch_prefix" {
   default     = ""
   description = "If you want to avoid cloudwatch collision or you don't want to merge all logs to one log group specify a prefix"
 }
-
-variable "health_check_path" {
-  default     = "/"
-  description = "The default health check path for the alb target group"
-}
