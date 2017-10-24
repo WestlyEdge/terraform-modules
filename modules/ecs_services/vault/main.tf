@@ -1,7 +1,7 @@
 
 module "alb_vault" {
 
-  source = "git@github.com:WestlyEdge/terraform-modules//modules//alb"
+  source = "../../alb"
 
   alb_name          = "alb-vault"
   port              = 80
