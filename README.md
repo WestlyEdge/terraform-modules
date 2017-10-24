@@ -22,7 +22,7 @@ ECS services (such as Consul and Vault) are also packaged as re-usable modules @
 
 ## ECS Logs
 
-All ECS instance logs are shipped out to Cloudwatch
+All ECS instance logs are shipped out to a Cloudwatch log group
 
 ## ECS configuration
 
