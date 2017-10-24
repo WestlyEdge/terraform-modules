@@ -1,6 +1,8 @@
 # ALB implementation that can be used to connect ECS instances to it
 
 resource "aws_alb_target_group" "default" {
+  depends_on = ["aws_alb.alb"]
+
   name                 = "${var.alb_name}-target"
   port                 = "${var.port}"
   protocol             = "${var.protocol}"
